@@ -1,10 +1,10 @@
 # EngWeb2024
 
-##Introdução
+## Introdução
 Trabalhos da unidade curricilar de Engenharia Web
 
-##Aluno
+## Aluno
 
--**Nome:** João Pedro da Rocha Rodrigues
--**ID:** a100896
--**Foto** ![Fotografia do aluno](myfoto.jpg)
+- **Nome:** João Pedro da Rocha Rodrigues
+- **ID:** a100896
+- **Foto** <br> ![Fotografia do aluno](myfoto.jpg)
