@@ -1,7 +1,7 @@
 # EngWeb2024
 
 ## Introdução
-Trabalhos da unidade curricilar de Engenharia Web
+Trabalhos da unidade curricular de Engenharia Web
 
 ## Aluno
 
