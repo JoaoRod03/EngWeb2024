@@ -58,7 +58,7 @@ conteudo = ""
 for streetName, f in bd:
     conteudo += f"""
                     <li>
-                       <a href="{streetName}.html">{streetName}</a>
+                       <a href="{streetName.replace(" ","")}.html">{streetName}</a>
                     </li>
                 """
 
