@@ -57,11 +57,14 @@ for xml_file in os.listdir(xml_folder):
         for para in paras:
             content += f"<p>{ET.tostring(para, method='text', encoding='unicode')}</p>"
 
+        content += "<br>"
+
         for figure in figures:
             image_path = "../MapaRuas-materialBase/MapaRuas-materialBase/" + figure.find('.//imagem').get('path').replace("../", "")
             image_caption = figure.find('.//legenda').text
             content += f"<figure><img src='{image_path}' style='max-width: 100%;height: auto;' alt='{image_caption}'><figcaption>{image_caption}</figcaption></figure>"
-            
+            content += "<br>"
+
         if houses:
             content += "<h2>Casas:</h2>"
             content += "<ul>"
@@ -71,15 +74,17 @@ for xml_file in os.listdir(xml_folder):
                 house_enfiteuta = enf.text if enf is not None and enf.text is not None else "Não existe enfiteuta"
                 foro = house.find(".//foro")
                 house_foro = foro.text if foro is not None and foro.text is not None else "Não existe foro"
-                content += f"<li>Casa {house_num}; Enfiteuta: {house_enfiteuta}, Foro: {house_foro}</li>"
+                description = house.find('.//desc/para')
+                description_text = ET.tostring(description, method='text', encoding='unicode').strip() if description is not None else ""
+                content += f"<li>Casa {house_num}; Enfiteuta: {house_enfiteuta}; Foro: {house_foro} <br> Descrição: {description_text}</li>"
             content += "</ul>"
 
 
         final_content = prehtml.format(title=f"{street_name}", streetName = street_name) + content + poshtml.format(streetName = street_name)
 
         outputFileName = f"{street_name.replace(' ','')}.html"
-        output_file = os.path.join(output_folder, outputFileName)
-        with open(output_file, 'w') as f:
+        outputFile = os.path.join(output_folder, outputFileName)
+        with open(outputFile, 'w', encoding='utf-8') as f:
             f.write(final_content)
 
 
