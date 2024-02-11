@@ -1,11 +1,6 @@
 import os
 import xml.etree.ElementTree as ET
 
-
-def chaveOrd(file):
-    root = ET.fromstring(file)
-    return root.find(".//meta/nome").text
-
 xml_folder = "./MapaRuas-materialBase/MapaRuas-materialBase/texto"
 
 bd = []
