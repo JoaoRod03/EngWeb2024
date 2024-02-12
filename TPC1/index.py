@@ -35,7 +35,7 @@ preHTML = """
 <body>
     <div class="w3-card-4">
 
-        <header class="w3-container w3-lime">
+        <header class="w3-container w3-red">
           <h3>Lista das Ruas de Braga</h3>
         </header>
         
@@ -50,7 +50,7 @@ posHTML = """
 
 </body>
 
-    <footer class="w3-container w3-lime">
+    <footer class="w3-container w3-red">
         <h5>Lista das Ruas de Braga :: A100896 </h5>
     </footer>
 
@@ -63,7 +63,7 @@ conteudo = ""
 for streetName, f in bd:
     conteudo += f"""
                     <li>
-                       <a href="{streetName.replace(" ","")}.html">{streetName}</a>
+                    <a href="{streetName.replace(" ","")}.html" style="text-decoration: none;">{streetName}</a>
                     </li>
                 """
 

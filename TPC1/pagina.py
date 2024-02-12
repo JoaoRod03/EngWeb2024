@@ -21,7 +21,7 @@ prehtml = """
         <body>
             <div class="w3-card-4">
 
-                <header class="w3-container w3-lime">
+                <header class="w3-container w3-red">
                 <h3>{streetName}</h3>
                 </header>
         
@@ -30,8 +30,9 @@ prehtml = """
 
 poshtml = """
                 </div>
-                <footer class="w3-container w3-lime">
+                <footer class="w3-container w3-red">
                     <h5>{streetName} :: A100896 </h5>
+                    <a href="index.html" style="text-decoration: none;">Voltar ao menu inicial</a>
                 </footer>
             </div>
         </body>
@@ -55,7 +56,7 @@ for xml_file in os.listdir(xml_folder):
         houses = root.findall(".//lista-casas/casa")
 
         for para in paras:
-            content += f"<p>{ET.tostring(para, method='text', encoding='unicode')}</p>"
+            content += f"<p style='text-align: justify;'>{ET.tostring(para, method='text', encoding='unicode')}</p>"
 
         content += "<br>"
 
