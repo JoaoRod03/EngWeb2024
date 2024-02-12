@@ -2,6 +2,11 @@ import os
 import xml.etree.ElementTree as ET
 
 xml_folder = "./MapaRuas-materialBase/MapaRuas-materialBase/texto"
+output_folder = "./ruas"
+
+
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
 
 bd = []
 
@@ -23,7 +28,7 @@ preHTML = """
     <head>
         <title>Ruas de Braga</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="w3.css">
+        <link rel="stylesheet" href="../w3.css">
         <meta charset="utf-8"/>
     </head>
 
@@ -63,6 +68,10 @@ for streetName, f in bd:
                 """
 
 pagHTML = preHTML + conteudo + posHTML
-f = open('index.html', 'w')
-f.write(pagHTML)
+
+outputFileName = f"index.html"
+outputFile = os.path.join(output_folder, outputFileName)
+with open(outputFile, 'w', encoding='utf-8') as f:
+    f.write(pagHTML)
 f.close()
+
