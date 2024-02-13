@@ -46,6 +46,10 @@ for xml_file in os.listdir(xml_folder):
         # Load the XML file
         tree = ET.parse(os.path.join(xml_folder, xml_file))
         root = tree.getroot()
+        numbers = xml_file[4:6]
+        numbers = numbers.lstrip('0')
+        numbers += "-"
+        print(numbers)
 
         content = ""
 
@@ -66,6 +70,23 @@ for xml_file in os.listdir(xml_folder):
             content += f"<figure><img src='{image_path}' style='max-width: 100%;height: auto;' alt='{image_caption}'><figcaption>{image_caption}</figcaption></figure>"
             content += "<br>"
 
+
+        atuais_path = "./MapaRuas-materialBase/MapaRuas-materialBase/atual"
+        atuais = [f for f in os.listdir(atuais_path) if f.startswith(numbers)]
+
+
+        for jpg_file in atuais:
+            jpg_path = os.path.join(atuais_path, jpg_file)
+
+            print("JPG Path:", jpg_path)
+
+            if os.path.exists(jpg_path):
+                content += f"<figure><img src='{jpg_path}' style='max-width: 100%; height: auto;' alt='{jpg_file}'><figcaption>{jpg_file}</figcaption></figure>"
+                print("File found:")
+            else:
+                print("File not found:")
+
+
         if houses:
             content += "<h2>Casas:</h2>"
             content += "<ul>"
@@ -76,16 +97,16 @@ for xml_file in os.listdir(xml_folder):
                 foro = house.find(".//foro")
                 house_foro = foro.text if foro is not None and foro.text is not None else "Não existe foro"
                 description = house.find('.//desc/para')
-                description_text = ET.tostring(description, method='text', encoding='unicode').strip() if description is not None else ""
+                description_text = ET.tostring(description, method ='text', encoding ='unicode').strip() if description is not None else ""
                 content += f"<li>Casa {house_num}; Enfiteuta: {house_enfiteuta}; Foro: {house_foro} <br> Descrição: {description_text}</li>"
             content += "</ul>"
 
 
-        final_content = prehtml.format(title=f"{street_name}", streetName = street_name) + content + poshtml.format(streetName = street_name)
+        final_content = prehtml.format(title = f"{street_name}", streetName = street_name) + content + poshtml.format(streetName = street_name)
 
         outputFileName = f"{street_name.replace(' ','')}.html"
         outputFile = os.path.join(output_folder, outputFileName)
-        with open(outputFile, 'w', encoding='utf-8') as f:
+        with open(outputFile, 'w', encoding ='utf-8') as f:
             f.write(final_content)
 
 
