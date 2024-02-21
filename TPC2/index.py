@@ -46,9 +46,10 @@ with open('mapa-virtual.json', 'r') as file:
 
 for city in sorted_cities:
     name = city['nome']
+    id = city['id']
     content += f"""
                     <li>
-                    <a href="{name}.html" style="text-decoration: none;">{name}</a>
+                    <a href="{id}.html" style="text-decoration: none;">{name}</a>
                     </li>
                 """
 

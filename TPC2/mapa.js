@@ -22,8 +22,13 @@ http.createServer(function(req, res) {
     }
     else {
         fs.readFile('mapa-virtual.json', function(err, data) {
-            if ((JSON.parse(data).map(function(city){return city.id})).includes(q)){
-                fs.readFile('output/'+ q +'.html', function(err, data) {
+            var cities_ids = []
+            var parsedData = JSON.parse(data)
+            parsedData.cidades.forEach(function(cidade) {
+                cities_ids.push(cidade.id)
+            })
+            if (cities_ids.includes(q.replace('.html', ''))) {
+                fs.readFile('output/'+ q , function(err, data) {
                     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(data)
                     res.end()
