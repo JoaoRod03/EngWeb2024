@@ -61,8 +61,8 @@ with open('mapa-virtual.json') as f:
             content += "<ul>"
             for connection in connections:
                 destination_name = next((city['nome'] for city in data['cidades'] if city['id'] == connection['destino']), None)
-                content += f"<li><a href='{connection['destino']}.html'>{destination_name} : {connection['distância']}km</a></li>"
-                content += "</ul>"
+                content += f"<li><a href='{connection['destino']}'>{destination_name} : {connection['distância']}km</a></li>"
+            content += "</ul>"
 
         final_content = prehtml.format(title = f"{city_name}", city_name = city_name) + content + poshtml.format(city_name = city_name)
 
