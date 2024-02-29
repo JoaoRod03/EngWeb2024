@@ -85,7 +85,7 @@ function genFilme(filme){
     
     if (filme.cast.length > 0) {
         pagHTML += '<p>Elenco: '
-        pagHTML += '<ul>'
+        pagHTML += '<ul class="w3-ul">'
         for (var ator in filme.cast) {
             pagHTML += `<li><a href='/atores/${filme.cast[ator]}'>${filme.cast[ator]}</a></li>`
             }
@@ -95,7 +95,7 @@ function genFilme(filme){
 
     if (filme.genres.length > 0) {
         pagHTML += '<p>Géneros: '
-        pagHTML += '<ul>'
+        pagHTML += '<ul class="w3-ul">'
         for (var genero in filme.genres) {
             pagHTML += `<li><a href='/generos/${filme.genres[genero]}'>${filme.genres[genero]}</a></li>`
         }
@@ -199,7 +199,7 @@ function genAtor(ator){
 
     if (ator.movies.length > 0) {
         pagHTML += '<p>Filmes em que participou:'
-        pagHTML += '<ul>'
+        pagHTML += '<ul class="w3-ul">'
         for (var movie in ator.movies) {
             pagHTML += `<li><a href='/filmes/${ator.movies[movie]}'>${ator.movies[movie]}</a></li>`
         }
@@ -301,7 +301,7 @@ function genGenero(genero){
     
     if (genero.movies.length > 0) {
         pagHTML += '<p>Filmes deste género:'
-        pagHTML += '<ul>'
+        pagHTML += '<ul class="w3-ul">'
         for (var movie in genero.movies) {
             pagHTML += `<li><a href='/filmes/${genero.movies[movie]}'>${genero.movies[movie]}</a></li>`
         }
