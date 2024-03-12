@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .w3-card-4
+        header.w3-container.w3-pink
+            h1= titulo
+        .w3-container 
+            table.w3-table-all
+                tr
+                    th Id
+                    th Nome
+                each p in lista
+                    tr
+                        td
+                            a.w3-button(href="/periodos/" + p.id)= p.id
+                        td= p.nome
+        footer.w3-container.w3-pink
+            address Gerado por A100896 :: EngWeb2024 em #{data}

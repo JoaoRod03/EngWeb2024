@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    .w3-card-4
+        header.w3-container.w3-pink
+            h1= titulo
+        .w3-container 
+            h1= periodo.nome
+            for compositor in periodo.compositores
+                h3= compositor.nome
+                br
+
+        footer.w3-container.w3-pink
+            address Gerado por A100896 :: EngWeb2024 em #{data}
+            a.w3-button.w3-pink(href="/periodos") Voltar à lista de períodos 
